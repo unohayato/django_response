@@ -42,3 +42,19 @@ class PDFView(View):
         p.save()
         buffer.seek(0)
         return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+
+from django.http import JsonResponse
+
+class PeopleAPIView(View):
+    def get(self, request):
+        people_ret = []
+        for p in people:
+            people_ret.append({
+                'id': p[0],
+                'name': p[1],
+                'age': p[2],
+            })
+        data = {
+            "people": people_ret
+        }
+        return JsonResponse(data=data)

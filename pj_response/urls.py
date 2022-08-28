@@ -23,4 +23,6 @@ urlpatterns = [
     path('', views.IndexView.as_view()),
     path('csv/', views.CSVView.as_view()),
     path('pdf/', views.PDFView.as_view()),
+    path('api/people/', views.PeopleAPIView.as_view()),
+    
 ]
