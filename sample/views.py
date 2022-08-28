@@ -25,3 +25,20 @@ class CSVView(View):
         writer.writerow(header)
         writer.writerows(people)
         return response
+      
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+
+class PDFView(View):
+    def get(self, request):
+        buffer = io.BytesIO()
+        p = canvas.Canvas(buffer)
+        
+        # この部分を変えると内容が変わる
+        p.drawString(50, 800, "Hello PDF!")
+        
+        p.showPage()
+        p.save()
+        buffer.seek(0)
+        return FileResponse(buffer, as_attachment=True, filename='hello.pdf')

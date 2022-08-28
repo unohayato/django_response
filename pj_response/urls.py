@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IndexView.as_view()),
     path('csv/', views.CSVView.as_view()),
+    path('pdf/', views.PDFView.as_view()),
 ]
