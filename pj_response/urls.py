@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from sample.views import IndexView
+from sample import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view()),
+    path('', views.IndexView.as_view()),
+    path('csv/', views.CSVView.as_view()),
 ]
